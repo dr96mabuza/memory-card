@@ -29,7 +29,10 @@ function App() {
   const [card, setCard] = useState(initialValues);
 
   const handleClick = () => {
-    setCard(card.sort(() => Math.random() - 0.5));
+    console.table(card);
+    const randomCards = card.sort(() => Math.random() - 0.5);
+
+    setCard(randomCards);
   };
 
   return (
