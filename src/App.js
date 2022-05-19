@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Display from "./components/cardDisplay";
+import ScoreDisplay from "./components/score";
 import uniqid from "uniqid";
 
 import image1 from "./components/Images/image-1.jpg";
@@ -31,6 +32,7 @@ function App() {
 
   const handleClick = (object) => {
     console.log("clicked " + object.id);
+    setScore(score + 1);
   };
 
   const shuffleArray = () => {
@@ -39,11 +41,14 @@ function App() {
   };
 
   useEffect(() => {
+    shuffleArray();
     console.log("changed");
-  }, [card]);
+    console.log(score);
+  }, [score]);
 
   return (
     <div className="App">
+      <ScoreDisplay score={score} />
       <Display list={card} cardClick={handleClick} />
     </div>
   );
